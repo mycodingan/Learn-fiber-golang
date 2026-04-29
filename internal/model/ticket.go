@@ -16,11 +16,11 @@ const (
 )
 
 type Ticket struct {
-	ID          string         `gorm:"primaryKey;type:uuid" json:"id"`
+	ID          string         `gorm:"primaryKey;type:varchar(36)" json:"id"`
 	Title       string         `gorm:"not null" json:"title"`
 	Description string         `gorm:"type:text" json:"description"`
 	Status      TicketStatus   `gorm:"type:varchar(20);default:'open'" json:"status"`
-	UserID      string         `gorm:"type:uuid;not null" json:"user_id"`
+	UserID      string         `gorm:"type:varchar(36);not null" json:"user_id"`
 	User        User           `gorm:"foreignKey:UserID" json:"user,omitempty"`
 	CreatedAt   time.Time      `json:"created_at"`
 	UpdatedAt   time.Time      `json:"updated_at"`
