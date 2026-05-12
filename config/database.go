@@ -10,7 +10,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
-	"learn/internal/model"
+	// "learn/internal/model"
 )
 
 var DB *gorm.DB
@@ -50,15 +50,4 @@ func ConnectDB() {
 	}
 
 	log.Println("Database MySQL connected successfully")
-
-	// Auto migration
-	err = DB.AutoMigrate(&model.User{}, &model.Ticket{})
-	if err != nil {
-		log.Fatal("Failed to migrate database:", err)
-	}
-
-	log.Println("Database migration completed")
-
-	// Jalankan Seeder
-	SeedData(DB)
 }
